@@ -11,6 +11,11 @@ public class ProductService {
     private List<Product> products = new ArrayList<>();
     private Long counter = 1L;
 
+    public ProductService() {
+        products.add(new DigitalProduct(counter++, "package", 24.99, "something.com", 5.6));
+        products.add(new PhysicalProduct(counter++, "27-inch Monitor", 249.99, 5.4, "61cm x 41cm x 18cm"));
+    }
+
     public List<Product> getAllProducts() {
         return products;
     }
