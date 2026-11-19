@@ -12,6 +12,12 @@ public class ProductController {
     @Autowired //@Autowired tells Spring: “hand me the object you built, don’t make me create it.”
     private ProductService productService; // Why no new? Because @Service on ProductService told Spring to create one at startup. @Autowired just asks for it.
 
+//    private final ProductService productService;
+//
+//    public ProductController(ProductService productService) {
+//        this.productService = productService;
+//    }
+
 //    @GetMapping("/{id}")
 //    // @PathVariable delivers it. This annotation tells Spring: “take the {id} part of the URL and put it into this parameter.” Spring also converts the text "1" into a Long for you. So inside the method, id holds 1.
 
@@ -42,5 +48,10 @@ public class ProductController {
     @GetMapping("/search")
     public List<Product> searchProduct(@RequestParam String name) {
         return productService.findByName(name);
+    }
+
+    @GetMapping("/summaries")
+    public List<String> getAllSummaries() {
+        return productService.getAllSummaries();
     }
 }
